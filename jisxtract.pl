@@ -1,6 +1,6 @@
 #!/usr/bin/perl -CS
 #
-#	JISxtract v0.1 -- ShiftJIS extractor 
+#	JISxtract v0.2 -- ShiftJIS extractor 
 #
 #  Copyright 2014, Giovanni Nunes <giovanni.nunes@gmail.com>
 #
@@ -92,7 +92,7 @@
 			if ( $byte==0 and $jf==1 )
 			{
 				print	"<tr>".
-						"<td>".sprintf('%08x',$locate)."</td>".
+						"<td>0x".sprintf('%08x',$locate)."</td>".
 						"<td>".length($text)."</td>".
 						"<td>";
 				
