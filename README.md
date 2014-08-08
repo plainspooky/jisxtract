@@ -1,4 +1,4 @@
-JISextract
+JISxtract
 by Giovanni Nunes
 
-JISxtract is a program to extract Shift JIS strings. The main purpouse is to help in translation of games of classic japanese computers.
+JISxtract is a simple [perl](http://www.perl.org/) script that try to identify Japanese [Shift_JIS](http://en.wikipedia.org/wiki/Shift_JIS) codified strings inside a file. The main purpose is help in translation of classic Japanese computer games.
