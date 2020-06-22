@@ -1,8 +1,8 @@
 #!/usr/bin/perl -CS
 #
-#	JISxtract v0.2 -- ShiftJIS extractor 
+#	JISxtract v0.3 -- ShiftJIS extractor 
 #
-#  Copyright 2014, Giovanni Nunes <giovanni.nunes@gmail.com>
+#   Copyright 2014-2020, Giovanni Nunes <giovanni.nunes@gmail.com>
 #
 #	This program is free software; you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@
 	use utf8;
 	use warnings;
 
-	# my numbers
+    # my numbers
 	#
 	my ( $i, $j, $k, $l);
 	my ( $byte, $filesize, $jf, $locate );
@@ -55,7 +55,7 @@
 		$jf=0;
 		$text="";
 		
-		# create a nice HTML file
+		# create a "nice" HTML file
 		#
 		print	"<html>\n".
 				"<head>\n".
@@ -87,7 +87,8 @@
 			#
 			$byte=ord substr($content,$i,1);
 			
-			# is a NULL and I'm catching JIS codes? The is the end of string and let's time print!
+			# is NULL and I'm catching JIS codes?
+            # Then is the end of string and let's print!
 			#
 			if ( $byte==0 and $jf==1 )
 			{
@@ -125,14 +126,14 @@
 				$jis=chr($byte);
 				$byte=ord substr($content,($i+1),1);
 				
-				# is byte between J2 bontaries?
+				# is byte between J2 bondaries?
 				#
 				if ( $byte>0x3e and $byte<0xff )
 				{
 					$jis.=chr($byte);
 					$utf=Encode::encode("shiftjis",$jis);
 					
-					# convert to UTF-8 to verify if is a valid code (dirty, I know)
+					# convert to UTF-8 to verify if is a valid code (dirty? I know!)
 					#
 					if ( ord($utf)!=0xfffd )
 					{
@@ -148,7 +149,7 @@
 					}
 					else
 					{
-						# is not a JIS code, ignore all
+						# isn't JIS code, ignore all
 						#
 						$jf=0;
 						$text="";
@@ -156,7 +157,7 @@
 				}
 				else
 				{
-					# is not a JIS code, reset too
+					# isn't JIS code, reset too!
 					#
 					$jf=0;
 					$text="";
@@ -170,7 +171,7 @@
 			}
 			else
 			{
-				# reset too... againd :-)
+				# reset too... again :-)
 				#
 				$jf=0;
 				$text="";
@@ -181,7 +182,7 @@
 			$i++;
 		}
 		
-		# finish my table and my html file
+		# finish table and HTML file
 		#
 		print	"</table>\n".
 				"</body>\n".
